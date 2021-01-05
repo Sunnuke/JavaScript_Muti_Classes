@@ -16,6 +16,14 @@ class Unit extends Card {
             this.res = res;
         }
     }
+    // METHODS
+    attack(target) {
+        if( target instanceof Unit ) {
+            target.res -= this.power;
+        } else {
+            throw new Error( "Target must be a unit!" );
+        }
+    }
 }
 
 class Effect extends Card {
@@ -25,6 +33,14 @@ class Effect extends Card {
             this.text = text;
             this.stat =stat;
             this.magnitude = magnitude;
+        }
+    }
+    // METHODS
+    play( target ) {
+        if( target instanceof Unit ) {
+            target.res += this.magnitude
+        } else {
+            throw new Error( "Target must be a unit!" );
         }
     }
 }
